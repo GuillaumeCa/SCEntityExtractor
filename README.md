@@ -21,7 +21,22 @@ Par défaut, l'outil utilisera le chemin `C:/Program Files/Roberts Space Industr
 
 # Compilation
 
-Pour compiler l'application à partir des sources, exécutez :
+### Prérequis:
+- python 3.11 (utiliser pyenv par ex)
+- uv (`pip install uv`)
+
+### Compiler l'application à partir des sources
+1. Cloner le repository de [scdatatools](https://gitlab.com/scmodding/frameworks/scdatatools) dans un dossier adjacent au projet
+2. Executer la commande
+```bash
+uv pip install ../scdatatools
+```
+3. Puis executer la commande suivante pour lancer l'application
+```bash
+uv run main.py
+```
+
+4. On peut aussi packager l'application en .exe avec la commande suivante
 ```bash
 uv run pyinstaller -F main.py -n SCEntityExtractor
 ```
