@@ -54,7 +54,6 @@ printConverter()
 
 def setup_config():
     global SC_INSTALL_PATH
-    global BLENDER_VERSION
 
     # Path where you want your JSON file
     file_path = Path("settings.json")
@@ -62,7 +61,6 @@ def setup_config():
     # Default content you want inside the JSON
     default_data = {
         "SC_path": SC_INSTALL_PATH,
-        "blender_version": BLENDER_VERSION,
     }
 
     # Check if the file exists

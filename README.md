@@ -1,5 +1,7 @@
 # SC Entity Extractor
 
+![image](doc/app.png)
+
 ⚠️ Cet outil a été testé avec Star Citizen 4.1. Il peut cesser de fonctionner avec les versions futures.
 
 Cet outil dépend de [scdatatools](https://gitlab.com/scmodding/frameworks/scdatatools) et d'une version bêta de [cgf-converter](https://github.com/Markemp/Cryengine-Converter/tree/192/new-ivo-format).
