@@ -13,14 +13,11 @@ Cet outil dépend de [scdatatools](https://gitlab.com/scmodding/frameworks/scdat
 5. Le premier lancement prendra un peu de temps, mais les lancements suivants seront plus rapides grâce à un système de cache (située dans le dossier .sccache)
 6. Sélectionnez l'entité que vous souhaitez extraire
 7. Cliquez sur "Exporter", cela enregistrera les fichiers exportés dans un dossier nommé `extract`
-8. Vous pouvez cliquer sur le bouton **Installer l'Addon Blender** pour ajouter l'addon d'importation à votre installation de Blender (par défaut Blender 3.5)
-9. Une fois l'addon ajouté vous pouvez l'utiliser pour importer le modèle que vous avez extrait. [Video d'exemple](https://youtu.be/0YUl951DTQE?t=197)
+8. Pour importer le modèle dans Blender vous pouvez installer l'outil [StarFab](https://gitlab.com/scmodding/tools/starfab/-/releases)
+9. Une fois l'application StarFab ouverte, fermez la fenêtre qui s'ouvre puis sélectionner l'onglet Blender dans la nouvelle fenêtre qui s'est ouverte.
+10. Suivez ensuite cette video pour configurer et installer l'addon: [video d'exemple](https://youtu.be/0YUl951DTQE?t=152). 
 
 Par défaut, l'outil utilisera le chemin `C:/Program Files/Roberts Space Industries/StarCitizen/LIVE` pour le chemin d'installation de Star Citizen, mais vous pouvez le modifier dans le fichier settings.json.
-
-La version par défaut de Blender peut également être configurée dans le fichier settings.json.
-
-Seule la version 3.5 de Blender est actuellement supportée.
 
 # Compilation
 

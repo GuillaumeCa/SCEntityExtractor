@@ -13,18 +13,15 @@ from tkinter import ttk
 from tkinter import messagebox
 
 from scdatatools.sc import StarCitizen
-from scdatatools.blender.addon import install
 from scdatatools.sc.blueprints.generators.datacore_entity import (
     blueprint_from_datacore_entity,
 )
-
 
 
 # logging.getLogger().setLevel(logging.DEBUG)
 
 
 SC_INSTALL_PATH="C:/Program Files/Roberts Space Industries/StarCitizen/LIVE"
-BLENDER_VERSION="Blender 3.5"
 
 CACHE_DIR=".sccache"
 
@@ -83,7 +80,6 @@ def setup_config():
         print("Loaded config: ", data)
 
         SC_INSTALL_PATH = data["SC_path"]
-        BLENDER_VERSION = data["blender_version"]
 
 
 
@@ -191,14 +187,6 @@ title_label.pack(pady=20)
 # search_button = ctk.CTkButton(root, text="Search", width=150, height=40, corner_radius=20, command=search)
 # search_button.pack(pady=10)
 
-
-
-def install_blender():
-    install(BLENDER_VERSION)
-    messagebox.showinfo("Information", "Blender addon was installed successfully!")
-
-blender_btn = ctk.CTkButton(root, text="Install Blender Addon", width=100, height=40, corner_radius=10, command=install_blender)
-blender_btn.pack(pady=10)
 
 style = ttk.Style()
 style.configure("Treeview", font=("Helvetica", 14))  # <--- Set font and size
