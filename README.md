@@ -8,7 +8,7 @@ Cet outil dépend de [scdatatools](https://gitlab.com/scmodding/frameworks/scdat
 
 # Installation & Utilisation
 
-1. Téléchargez [SCEntityExtractor.exe](https://github.com/GuillaumeCa/SCEntityExtractor/releases/download/1.0/SCEntityExtractor_1.0.zip)
+1. Téléchargez [SCEntityExtractor.exe](https://github.com/GuillaumeCa/SCEntityExtractor/releases/latest/download/SCEntityExtractor.zip)
 2. Téléchargez les outils [texconv](https://github.com/microsoft/DirectXTex/releases) et [cgf-converter](https://github.com/GuillaumeCa/SCEntityExtractor/releases/download/1.0/cgf-converter_beta.zip) dans un dossier de votre choix
 3. Ajoutez ce dossier à votre variable d'environnement PATH
 4. Lancez SCEntityExtractor.exe

@@ -14,4 +14,3 @@ ext_tools
 *.log
 .sccache
 extract
-*.spec

@@ -9,6 +9,7 @@ import shutil
 from pathlib import Path
 
 import customtkinter as ctk
+import tkinter as tk 
 from tkinter import ttk
 from tkinter import messagebox
 
@@ -101,22 +102,11 @@ sc = StarCitizen(SC_INSTALL_PATH, cache_dir=CACHE_DIR)
 print("Loading Datacore")
 assert sc.datacore is not None
 
-def search():
-    query = entry.get()
 
-    # filetree = sc.p4k.file_tree
+def show_entities(entities, filter = ""):
+    for child in treeview.get_children():
+        treeview.delete(child)
     
-    for i in treeview.get_children():
-        treeview.delete(i)
-
-    entity_names = []
-    for entKey in sc.datacore.entities:
-        if query.lower() in entKey.lower():
-            entity_names.append(sc.datacore.entities[entKey])
-    
-    show_entities(entity_names)
-
-def show_entities(entities):
     for ent in entities:
         category = ""
         filename = entities[ent].filename
@@ -127,27 +117,12 @@ def show_entities(entities):
         else:
             continue
 
+        if not filter.lower() in ent.lower():
+            continue
+
 
         treeview.insert("", "end", text=ent, values=(category))
 
-
-    # listbox.delete("1.0", ctk.END)
-    
-    # build_tree(filetree)
-
-    # for folder in folders:
-    #     print(folder)
-    #     listbox.insert(ctk.END, folder)
-
-def build_tree(datatree: dict, parent: str = ""):
-    for key in datatree:
-        val = datatree[key]
-        if type(val) is dict:
-            if len(val.keys()) > 0:
-                subtree = treeview.insert(parent, "end", text=key, values=("Folder"))
-                build_tree(val, subtree)
-            else:
-                treeview.insert(parent, "end", text=key, values=("File"))
 
 selected_item_data = None
 
@@ -166,7 +141,6 @@ def on_item_selected(event):
 
 print("Starting app")
 
-
 # Main window
 root = ctk.CTk()
 root.title("SC Entity Extractor")
@@ -177,41 +151,51 @@ root.geometry("500x800")
 title_label = ctk.CTkLabel(root, text="SC Entity Extractor", font=("Helvetica", 24))
 title_label.pack(pady=20)
 
-# # Entry (TextField)
-# entry = ctk.CTkEntry(root, width=300, height=40, font=("Helvetica", 14))
-# entry.pack(pady=10)
 
-# # Rounded Search Button
-# search_button = ctk.CTkButton(root, text="Search", width=150, height=40, corner_radius=20, command=search)
-# search_button.pack(pady=10)
+def on_search_change(event):
+    search: str = search_entry.get()
+
+    show_entities(sc.datacore.entities, search)
+
+# Search Textbox
+search_entry = ctk.CTkEntry(root, placeholder_text="Search", height=30)
+search_entry.pack(padx=10, pady=10, fill="x")
+search_entry.bind('<Key>', on_search_change)
 
 
 style = ttk.Style()
-style.configure("Treeview", font=("Helvetica", 14))  # <--- Set font and size
-style.configure("Treeview.Heading", font=("Helvetica", 16, "bold"))  # <--- Heading font
-style.configure("Treeview", rowheight=24)
 
+style.theme_use("vista")
 
-# Tree for results
+style.configure("Treeview", font=("Helvetica", 14), background="#404040", foreground="white", fieldbackground="#404040")  # <--- Set font and size
+style.configure("Treeview.Heading", 
+                font=("Helvetica", 16, "bold"), 
+                foreground="black"
+)
 
-# listbox = ctk.CTkTextbox(root, width=400, height=150, font=("Helvetica", 12))
-# listbox.pack(pady=20)
+style.configure("Treeview", rowheight=30)
 
-treeview = ttk.Treeview(root)
+frame = tk.Frame(root)
+frame.pack(pady=10, fill="both", expand=True)
+
+# Treeview
+treeview = ttk.Treeview(frame)
 
 treeview["columns"] = ("Type")
-treeview.column("#0", width=150, minwidth=100)  # Tree column
-treeview.column("Type", anchor="w", width=120)
+treeview.column("#0", width=200, minwidth=100)  # Tree column
+treeview.column("Type", anchor="w", width=60)
 
 treeview.heading("#0", text="Item", anchor="w")
 treeview.heading("Type", text="Type", anchor="w")
 
 
-treeview.pack(pady=10, padx=20, fill="both", expand=True)
-
+treeview.pack(side=tk.LEFT, fill="both", expand=True)
 treeview.bind("<<TreeviewSelect>>", on_item_selected)
 
+scrollbar = ttk.Scrollbar(frame, orient="vertical", command=treeview.yview)
 
+scrollbar.pack(side=tk.RIGHT, fill="y")
+treeview.configure(yscrollcommand=scrollbar.set)
 
 def export():
     # Set progress bar to visible
