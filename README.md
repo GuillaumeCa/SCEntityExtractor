@@ -40,5 +40,5 @@ uv run main.py
 
 4. On peut aussi packager l'application en .exe avec la commande suivante
 ```bash
-uv run pyinstaller -F main.py -n SCEntityExtractor
+uv run pyinstaller SCEntityExtractor.spec
 ```
