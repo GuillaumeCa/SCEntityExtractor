@@ -1,6 +1,6 @@
 # 🚀 SC Entity Extractor
 
-![image](doc/app.png)
+<img src="doc/app.png" height="600" />
 
 ⚠️ Cet outil a été testé avec Star Citizen 4.1. Il peut cesser de fonctionner avec les versions futures.
 
