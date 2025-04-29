@@ -48,10 +48,6 @@ def check_tools():
 
 check_tools()
 
-from scdatatools.engine.chunkfile.converter import printConverter
-
-printConverter()
-
 
 def setup_config():
     global SC_INSTALL_PATH
