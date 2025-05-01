@@ -1,3 +1,4 @@
 {
-    "SC_path": "C:/Program Files/Roberts Space Industries/StarCitizen/LIVE"
+    "SC_path": "C:/Program Files/Roberts Space Industries/StarCitizen/LIVE",
+    "output_dir": "./extract"
 }

@@ -1,4 +1,6 @@
 import threading
+import os
+import sys
 import customtkinter as ctk
 import tkinter as tk
 from tkinter import ttk, messagebox
@@ -14,9 +16,19 @@ class SCEntityExtractorApp:
         # Initialize GUI
         self.root = ctk.CTk()
         self.root.title("SC Entity Extractor")
+        self.root.iconbitmap(self.resource_path('icon.ico'))
         self.root.geometry("500x800")
 
         self._setup_ui()
+
+
+    def resource_path(self, relative_path: str):
+        try:
+            base_path = sys._MEIPASS
+        except AttributeError:
+            base_path = os.path.abspath(".")
+
+        return os.path.join(base_path, relative_path)
 
     def _setup_ui(self):
         # Title Label
@@ -93,7 +105,7 @@ class SCEntityExtractorApp:
 
         entity_name = self.selected_item_data["text"]
         try:
-            self.exporter.export_entity(entity_name)
+            self.exporter.export_entity(entity_name, export_label=self.export_label)
             messagebox.showinfo("Information", f"Your model {entity_name} was exported successfully!")
         except Exception as e:
             messagebox.showerror("Error", str(e))
