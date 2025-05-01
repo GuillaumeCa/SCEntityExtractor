@@ -35,7 +35,7 @@ uv pip install ../scdatatools
 ```
 3. Puis executer la commande suivante pour lancer l'application
 ```bash
-uv run main.py
+uv run src/main.py
 ```
 
 4. On peut aussi packager l'application en .exe avec la commande suivante
