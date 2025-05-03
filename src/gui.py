@@ -1,9 +1,13 @@
 import threading
 import os
 import sys
+import subprocess
+from pathlib import Path
+
 import customtkinter as ctk
 import tkinter as tk
 from tkinter import ttk, messagebox
+
 from exporter import Exporter
 from config import Config
 
@@ -12,6 +16,8 @@ class SCEntityExtractorApp:
         self.config = config
         self.exporter = Exporter(config)
         self.selected_item_data = None
+
+        self.install_path = Path(self.config.SC_INSTALL_PATH)
 
         # Initialize GUI
         self.root = ctk.CTk()
@@ -35,6 +41,9 @@ class SCEntityExtractorApp:
         title_label = ctk.CTkLabel(self.root, text="SC Entity Extractor", font=("Helvetica", 24))
         title_label.pack(pady=20)
 
+        # SC Versions selector
+        self._setup_versions()
+
         # Search Textbox
         self.search_entry = ctk.CTkEntry(self.root, placeholder_text="Search", height=30)
         self.search_entry.pack(padx=10, pady=10, fill="x")
@@ -51,6 +60,30 @@ class SCEntityExtractorApp:
         # Progress Bar and Label
         self.export_label = ctk.CTkLabel(self.root, text="Exporting...", font=("Helvetica", 12))
         self.progressbar = ctk.CTkProgressBar(self.root, mode="indeterminate")
+
+    def _setup_versions(self):
+        parent_path = self.install_path.parent
+        
+        versions = []
+        for dir in os.listdir(parent_path):
+            versions.append(dir)
+        
+        version_select = ctk.CTkComboBox(self.root, values=versions, command=self.change_version)
+        version_select.pack(pady=10, padx=10, fill="x")
+        version_select.set(self.install_path.name)
+        version_select.configure(state="disabled" if len(versions) <= 1 else "readonly")
+
+    def change_version(self, version):
+        if version != self.install_path.name:
+            new_version_path = Path(self.install_path.parent / version)
+            self.config.SC_INSTALL_PATH = str(new_version_path)
+            self.config.save()
+
+            messagebox.showinfo("Changing Version", "The app will restart to load the new version.")
+            
+            # Restart the application
+            subprocess.Popen([sys.executable], env={**os.environ, "PYINSTALLER_RESET_ENVIRONMENT": "1"})
+            sys.exit(0)
 
     def _setup_treeview(self):
         style = ttk.Style()
