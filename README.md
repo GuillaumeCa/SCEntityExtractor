@@ -12,10 +12,10 @@
 2. 🛠️ Téléchargez les outils [texconv](https://github.com/microsoft/DirectXTex/releases) et [cgf-converter](https://github.com/GuillaumeCa/SCEntityExtractor/releases/download/1.0/cgf-converter_beta.zip) dans un dossier de votre choix
 3. ⚙️ Ajoutez ce dossier à votre variable d'environnement PATH
 4. 🚀 Lancez SCEntityExtractor.exe
-5. ⏳ Le premier lancement prendra un peu de temps, mais les lancements suivants seront plus rapides grâce à un système de cache (située dans le dossier `.sccache`)
+5. ⏳ Le premier lancement prendra un peu de temps, mais les lancements suivants seront plus rapides grâce à un système de cache (situé dans le dossier `.sccache`)
 6. 🧩 Sélectionnez l'entité que vous souhaitez extraire
 7. 📁 Cliquez sur "Exporter", cela enregistrera les fichiers exportés dans un dossier nommé `extract`
-8. 🛸 Pour importer le modèle dans Blender, vous pouvez installer l'outil [StarFab](https://gitlab.com/scmodding/tools/starfab/-/releases)
+8. 🛸 Pour importer le modèle dans Blender (3.5 ou inférieur), vous pouvez installer l'outil [StarFab](https://gitlab.com/scmodding/tools/starfab/-/releases)
 9. 🎛️ Une fois l'application StarFab ouverte, fermez la fenêtre qui s'ouvre puis sélectionnez l'onglet **Blender** dans la nouvelle fenêtre qui s'est ouverte.
 10. 🎥 Suivez ensuite cette vidéo pour configurer et installer l'addon : [vidéo d'exemple](https://youtu.be/0YUl951DTQE?t=152).
 
