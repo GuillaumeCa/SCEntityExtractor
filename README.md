@@ -1,4 +1,7 @@
 # 🚀 SC Entity Extractor
+
+![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/GuillaumeCa/SCEntityExtractor/latest/total?style=flat&label=T%C3%A9l%C3%A9chargements&color=blue)
+
 > [!IMPORTANT]
 > Tout le contenu extrait avec cet outil est la propriété de CIG. Toute création réalisé à partir de ce contenu et rendu publique est également la propriété de CIG.  
 
